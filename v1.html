@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vocation · v1</title>
+  <meta name="description" content="Group guide for Vocation, October 4, 2026. Joshua Parrish. Daniel 6:1–4 and Colossians 3:23–24, read aloud over scenes from the passage.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312343c'/%3E%3Cpath d='M8 15.5 16 8l8 7.5V24H8Z' fill='none' stroke='%23e4c27a' stroke-width='1.6'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,520;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,460;0,8..60,600;1,8..60,460&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --sea: #12343c;
+  --sea-deep: #0c2228;
+  --gold: #b8893d;
+  --gold-bright: #e4c27a;
+  --cream: #f4efe4;
+  --paper: #fffaf3;
+  --ink: #1a2422;
+  --muted: #5c675f;
+  --line: rgba(18, 52, 60, 0.14);
+  --mist: #e4ecec;
+  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --serif: "Source Serif 4", Palatino, "Palatino Linotype", serif;
+  --sans: Outfit, "Segoe UI", sans-serif;
+  --measure: 40rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 420px at 0% 0%, #fff 0%, transparent 55%),
+    var(--cream);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+img, video { max-width: 100%; }
+
+a { color: var(--sea); }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--paper);
+  color: var(--sea);
+  padding: 0.5rem 0.8rem;
+  z-index: 5;
+}
+
+.skip:focus { top: 1rem; }
+
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  align-items: end;
+  color: var(--cream);
+  background: var(--sea-deep) url("media/hero.jpg") center 40% / cover no-repeat;
+  overflow: hidden;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 20, 24, 0.92) 0%, rgba(8, 20, 24, 0.28) 46%, rgba(8, 20, 24, 0.18) 100%);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100% - 2.5rem));
+  margin: 0 auto 3.2rem;
+}
+
+.series {
+  margin: 0 0 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 520;
+  font-size: clamp(4.6rem, 12vw, 8.4rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.byline {
+  margin: 0.9rem 0 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.7rem;
+  align-items: center;
+  margin: 1.3rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+.keys span { opacity: 0.8; }
+
+.keys a,
+.jump a {
+  color: var(--cream);
+  text-decoration: none;
+  border: 1px solid rgba(228, 194, 122, 0.55);
+  border-radius: 999px;
+  padding: 0.28rem 0.75rem;
+}
+
+.keys a:hover,
+.jump a:hover,
+.keys a:focus-visible,
+.jump a:focus-visible {
+  background: rgba(228, 194, 122, 0.18);
+}
+
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+main {
+  width: min(760px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3.2rem 0 4rem;
+}
+
+h2, h3 {
+  font-family: var(--display);
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h2 { font-size: 2rem; margin: 0 0 1rem; }
+
+h3 { font-size: 1.45rem; margin: 0 0 0.45rem; }
+
+.intro p,
+.lead,
+.practice p { margin: 0 0 1rem; }
+
+.icebreaker,
+.prayer {
+  margin: 2.4rem 0 2.8rem;
+  padding: 1.3rem 1.35rem 1.4rem 1.2rem;
+  background: var(--paper);
+  border-radius: 18px;
+  box-shadow: inset 4px 0 0 var(--gold), 0 16px 40px rgba(18, 52, 60, 0.06);
+}
+
+.prayer + .icebreaker { margin-top: 1rem; }
+
+.film { margin: 2.4rem 0 0; }
+
+.film + .prayer { margin-top: 1.4rem; }
+
+.study-film {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 18px;
+  background: var(--sea-deep);
+  display: block;
+}
+
+.kicker {
+  margin: 0 0 0.45rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.prompt {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 520;
+  font-style: italic;
+  font-size: 1.55rem;
+  line-height: 1.35;
+}
+
+.question {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0.4rem 0.8rem;
+  padding: 1.6rem 0 0.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.num {
+  margin: 0.15rem 0 0;
+  font-family: var(--display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.reading {
+  margin: 1.1rem 0 1.4rem;
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--sea-deep);
+  box-shadow: 0 18px 40px rgba(12, 34, 40, 0.18);
+}
+
+.stage video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--sea-deep);
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to top, rgba(8, 20, 24, 0.62), rgba(8, 20, 24, 0.12) 55%);
+}
+
+.is-playing .veil,
+.is-paused .veil { display: none; }
+
+.hear, .toggle, .jump {
+  font-family: var(--sans);
+  cursor: pointer;
+}
+
+.hear {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 1rem 0.45rem 0.45rem;
+  background: var(--paper);
+  color: var(--sea-deep);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.hear:focus-visible,
+.toggle:focus-visible,
+.jump:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+.mark {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  background: var(--gold);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.mark::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 9px solid var(--sea-deep);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  margin-left: 3px;
+}
+
+.bar {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.7rem 0.8rem;
+  background: linear-gradient(to top, rgba(8, 20, 24, 0.88), transparent);
+  color: var(--cream);
+}
+
+.is-playing .bar,
+.is-paused .bar { display: flex; }
+
+.toggle {
+  border: 0;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--sea-deep);
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+}
+
+.now {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+.verses {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.verse {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.85rem 0.95rem;
+  border-top: 1px solid var(--line);
+}
+
+.verse:first-child { border-top: 0; }
+
+.verse p { margin: 0; }
+
+.verse.is-active {
+  background: #fff6e4;
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.vref {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.15rem;
+}
+
+.jump {
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+}
+
+.is-playing .verse.is-active .mark::before {
+  width: 8px;
+  height: 10px;
+  border: 0;
+  margin: 0;
+  background:
+    linear-gradient(var(--sea-deep), var(--sea-deep)) 0 0 / 3px 10px no-repeat,
+    linear-gradient(var(--sea-deep), var(--sea-deep)) 5px 0 / 3px 10px no-repeat;
+}
+
+.credit, .saved, footer p {
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.credit { margin: 0.55rem 0 0; }
+
+.practice {
+  margin-top: 2rem;
+  padding: 1.4rem 1.3rem 1.2rem;
+  background: var(--mist);
+  border-radius: 18px;
+}
+
+.practice h2 { margin-bottom: 0.8rem; }
+
+.note {
+  display: block;
+  margin: 0 0 1.1rem;
+}
+
+.note span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid rgba(18, 52, 60, 0.18);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font: inherit;
+  color: inherit;
+  background: var(--paper);
+  resize: vertical;
+}
+
+.saved { margin: 0; }
+
+footer {
+  width: min(760px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0 0 3rem;
+}
+
+footer p { margin: 0 0 0.4rem; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 1.05rem; }
+  .hero { min-height: 78vh; }
+  .prompt { font-size: 1.3rem; }
+  .question { grid-template-columns: 1fr; gap: 0.2rem; }
+  .num { font-size: 1.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-media { display: none; }
+}
+
+</style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to the guide</a>
+
+  <header class="hero">
+    <video class="hero-media" autoplay muted loop playsinline poster="media/hero.jpg">
+      <source src="media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-copy">
+      <p class="series">2026 Fall Vision Series</p>
+      <h1>Vocation</h1>
+      <p class="byline">Joshua Parrish <span aria-hidden="true">·</span> <time datetime="2026-10-04">October 4, 2026</time></p>
+      <p class="keys">
+        <span>Key texts</span>
+        <a href="#daniel">Daniel 6:1–4</a>
+        <a href="#colossians">Colossians 3:23–24</a>
+      </p>
+      <nav class="jump" aria-label="Guide">
+        <a href="#film">Film</a>
+        <a href="#prayer">Prayer</a>
+        <a href="#icebreaker">Icebreaker</a>
+        <a href="#discuss">Discussion</a>
+        <a href="#practice">Practice</a>
+        <a href="v2.html">v2</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="intro" aria-labelledby="intro-title">
+      <h2 id="intro-title">Introduction</h2>
+      <p>As apprentices to Jesus, we practice vocation in contrast to a world that seeks meaning at the altars of accomplishment and accumulation. Ultimately, the practice of vocation is participating with God through stewarding our God-given identity and calling to create and cultivate good in the world.</p>
+      <p>Our work, paid or unpaid, matters, and so does the way we approach our work; we seek to pursue excellence and integrity in the everyday, ordinary details. We are invited to practice vocation through cultivating habits of open-handedness and contribution.</p>
+      <p>Open-handedness is the habit of stewarding our time, talents, and treasures as channels through which God’s abundance flows to others. Contribution is partnering with God in the renewal of all things through the continual integration of our inner and outer lives. Rather than pursuing ambition or visibility, we desire faithfulness. We invite the Holy Spirit to transform and empower us as we seek to become the kind of people who, rooted in Christ, build, cultivate, and seek shalom in the very places God has planted us.</p>
+    </section>
+
+    <section class="film" id="film" aria-labelledby="film-title">
+      <h2 id="film-title">Film</h2>
+      <video class="study-film" controls playsinline preload="metadata" poster="media/hero.jpg">
+        <source src="media/vocation.mp4" type="video/mp4">
+      </video>
+    </section>
+
+    <section class="prayer" id="prayer" aria-labelledby="prayer-title">
+      <p class="kicker" id="prayer-title">Opening prayer</p>
+      <p class="prompt">Father, thank you for gathering us and for the work you have placed in our hands. Quiet what we carried in with us, and give us honest hearts as we open your Word. Teach us to offer our ordinary work to you, with excellence and integrity, for the good of the people around us. Amen.</p>
+    </section>
+
+    <section class="icebreaker" id="icebreaker" aria-labelledby="ice-title">
+      <p class="kicker" id="ice-title">Icebreaker</p>
+      <p class="prompt">Where is one place (your job, neighborhood, team, school) where you can honestly say “this is exactly where I’m supposed to be?” How might God be using you there, or inviting you into something more, to help that place flourish?</p>
+    </section>
+
+    <section class="discuss" id="discuss" aria-labelledby="discuss-title">
+      <h2 id="discuss-title">Discussion Questions</h2>
+
+      <article class="question">
+        <p class="num" aria-hidden="true">1</p>
+        <div>
+          <h3>From the sermon</h3>
+          <p>Thinking back to the sermon from this Sunday, what stuck with you? Was there anything particularly encouraging or challenging for you?</p>
+        </div>
+      </article>
+
+      <article class="question" id="daniel">
+        <p class="num" aria-hidden="true">2</p>
+        <div>
+          <h3>How Daniel is described</h3>
+          <p class="lead">Read <strong>Daniel 6:1–4</strong>. What details stand out to you from this passage? What stands out to you about the way that Daniel is described?</p>
+          <figure class="reading">
+            <div class="stage">
+              <video playsinline preload="none" poster="media/dan-6-1.jpg"></video>
+              <div class="veil">
+                <button type="button" class="hear">
+                  <span class="mark" aria-hidden="true"></span>
+                  <span class="label">Hear Daniel 6:1–4</span>
+                </button>
+              </div>
+              <div class="bar">
+                <button type="button" class="toggle">Pause</button>
+                <p class="now"></p>
+              </div>
+            </div>
+            <ol class="verses">
+              <li class="verse" data-src="media/dan-6-1.mp4" data-poster="media/dan-6-1.jpg" data-ref="Daniel 6:1">
+                <button type="button" class="jump" aria-label="Play Daniel 6:1"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:1</span> It pleased Darius to set over the kingdom one hundred twenty satraps, who should be throughout the whole kingdom;</p>
+              </li>
+              <li class="verse" data-src="media/dan-6-2.mp4" data-poster="media/dan-6-2.jpg" data-ref="Daniel 6:2">
+                <button type="button" class="jump" aria-label="Play Daniel 6:2"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:2</span> and over them three presidents, of whom Daniel was one; that these satraps might give account to them, and that the king should suffer no loss.</p>
+              </li>
+              <li class="verse" data-src="media/dan-6-3.mp4" data-poster="media/dan-6-3.jpg" data-ref="Daniel 6:3">
+                <button type="button" class="jump" aria-label="Play Daniel 6:3"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:3</span> Then this Daniel was distinguished above the presidents and the satraps, because an excellent spirit was in him; and the king thought to set him over the whole realm.</p>
+              </li>
+              <li class="verse" data-src="media/dan-6-4.mp4" data-poster="media/dan-6-4.jpg" data-ref="Daniel 6:4">
+                <button type="button" class="jump" aria-label="Play Daniel 6:4"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:4</span> Then the presidents and the satraps sought to find occasion against Daniel as touching the kingdom; but they could find no occasion or fault, because he was faithful. There wasn’t any error or fault found in him.</p>
+              </li>
+            </ol>
+            <p class="credit">World English Bible, public domain. <a href="https://www.biblegateway.com/passage/?search=Daniel+6%3A1-4&amp;version=NIV">Open the NIV</a></p>
+            <p class="sr-only status" aria-live="polite"></p>
+          </figure>
+        </div>
+      </article>
+
+      <article class="question">
+        <p class="num" aria-hidden="true">3</p>
+        <div>
+          <h3>Excellence you didn’t choose</h3>
+          <p class="lead">Read <strong>Daniel 6:1–3</strong>. Daniel is given significant responsibility as an exile in a foreign land, one that did not share his values or worship his God. Put yourself in his position – surrounded by ambition and competition in a role you didn’t necessarily choose for yourself. What do you think allowed Daniel to distinguish himself above the other administrators? How does this challenge or encourage you when you think about bringing a quality of excellence to a role or responsibility that you maybe didn’t choose, or you feel “stuck” with?</p>
+          <figure class="reading">
+            <div class="stage">
+              <video playsinline preload="none" poster="media/dan-6-1.jpg"></video>
+              <div class="veil">
+                <button type="button" class="hear">
+                  <span class="mark" aria-hidden="true"></span>
+                  <span class="label">Hear Daniel 6:1–3</span>
+                </button>
+              </div>
+              <div class="bar">
+                <button type="button" class="toggle">Pause</button>
+                <p class="now"></p>
+              </div>
+            </div>
+            <ol class="verses">
+              <li class="verse" data-src="media/dan-6-1.mp4" data-poster="media/dan-6-1.jpg" data-ref="Daniel 6:1">
+                <button type="button" class="jump" aria-label="Play Daniel 6:1"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:1</span> It pleased Darius to set over the kingdom one hundred twenty satraps, who should be throughout the whole kingdom;</p>
+              </li>
+              <li class="verse" data-src="media/dan-6-2.mp4" data-poster="media/dan-6-2.jpg" data-ref="Daniel 6:2">
+                <button type="button" class="jump" aria-label="Play Daniel 6:2"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:2</span> and over them three presidents, of whom Daniel was one; that these satraps might give account to them, and that the king should suffer no loss.</p>
+              </li>
+              <li class="verse" data-src="media/dan-6-3.mp4" data-poster="media/dan-6-3.jpg" data-ref="Daniel 6:3">
+                <button type="button" class="jump" aria-label="Play Daniel 6:3"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:3</span> Then this Daniel was distinguished above the presidents and the satraps, because an excellent spirit was in him; and the king thought to set him over the whole realm.</p>
+              </li>
+            </ol>
+            <p class="credit">World English Bible, public domain. <a href="https://www.biblegateway.com/passage/?search=Daniel+6%3A1-3&amp;version=NIV">Open the NIV</a></p>
+            <p class="sr-only status" aria-live="polite"></p>
+          </figure>
+        </div>
+      </article>
+
+      <article class="question">
+        <p class="num" aria-hidden="true">4</p>
+        <div>
+          <h3>When no one is watching</h3>
+          <p class="lead">Read <strong>Daniel 6:4</strong>. The other officials went looking for something to accuse Daniel of and came up empty — not because he was flawless, but because his excellence and integrity were consistent, even when he was not being rewarded for it. Where might God be inviting you to pursue quiet, consistent integrity and excellence, even in places no one else might notice? Digging a little deeper, where in your own life might you be tempted to cut corners, to do the bare minimum, or to perform only when someone is watching?</p>
+          <figure class="reading">
+            <div class="stage">
+              <video playsinline preload="none" poster="media/dan-6-4.jpg"></video>
+              <div class="veil">
+                <button type="button" class="hear">
+                  <span class="mark" aria-hidden="true"></span>
+                  <span class="label">Hear Daniel 6:4</span>
+                </button>
+              </div>
+              <div class="bar">
+                <button type="button" class="toggle">Pause</button>
+                <p class="now"></p>
+              </div>
+            </div>
+            <ol class="verses">
+              <li class="verse" data-src="media/dan-6-4.mp4" data-poster="media/dan-6-4.jpg" data-ref="Daniel 6:4">
+                <button type="button" class="jump" aria-label="Play Daniel 6:4"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Daniel 6:4</span> Then the presidents and the satraps sought to find occasion against Daniel as touching the kingdom; but they could find no occasion or fault, because he was faithful. There wasn’t any error or fault found in him.</p>
+              </li>
+            </ol>
+            <p class="credit">World English Bible, public domain. <a href="https://www.biblegateway.com/passage/?search=Daniel+6%3A4&amp;version=NIV">Open the NIV</a></p>
+            <p class="sr-only status" aria-live="polite"></p>
+          </figure>
+        </div>
+      </article>
+
+      <article class="question" id="colossians">
+        <p class="num" aria-hidden="true">5</p>
+        <div>
+          <h3>As for the Lord</h3>
+          <p class="lead">Read <strong>Colossians 3:23–24</strong>. Whether your work is paid or unpaid, seen or unseen, celebrated or overlooked, what do you think would change if you approached it as service to the Lord rather than to people? This excellence does ultimately ripple outward to the people around us. Think of one task on your plate this week. What would it look like to do this specific task “as for the Lord,” and who might benefit if you did it with excellence?</p>
+          <figure class="reading">
+            <div class="stage">
+              <video playsinline preload="none" poster="media/col-3-23.jpg"></video>
+              <div class="veil">
+                <button type="button" class="hear">
+                  <span class="mark" aria-hidden="true"></span>
+                  <span class="label">Hear Colossians 3:23–24</span>
+                </button>
+              </div>
+              <div class="bar">
+                <button type="button" class="toggle">Pause</button>
+                <p class="now"></p>
+              </div>
+            </div>
+            <ol class="verses">
+              <li class="verse" data-src="media/col-3-23.mp4" data-poster="media/col-3-23.jpg" data-ref="Colossians 3:23">
+                <button type="button" class="jump" aria-label="Play Colossians 3:23"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Colossians 3:23</span> And whatever you do, work heartily, as for the Lord, and not for men,</p>
+              </li>
+              <li class="verse" data-src="media/col-3-24.mp4" data-poster="media/col-3-24.jpg" data-ref="Colossians 3:24">
+                <button type="button" class="jump" aria-label="Play Colossians 3:24"><span class="mark" aria-hidden="true"></span></button>
+                <p><span class="vref">Colossians 3:24</span> knowing that from the Lord you will receive the reward of the inheritance; for you serve the Lord Christ.</p>
+              </li>
+            </ol>
+            <p class="credit">World English Bible, public domain. <a href="https://www.biblegateway.com/passage/?search=Colossians+3%3A23-24&amp;version=NIV">Open the NIV</a></p>
+            <p class="sr-only status" aria-live="polite"></p>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <section class="practice" id="practice" aria-labelledby="practice-title">
+      <h2 id="practice-title">Practice: Contribution Audit</h2>
+      <p>Thank God for the work, paid or unpaid, that he has given you, and for the time, talents, and treasures he has entrusted to you.</p>
+      <p>Pick one place where you currently spend a lot of time. How might God be inviting you to partner with God in bringing renewal to that space? Ask the Holy Spirit to open your eyes to see where God is already at work. Write down 1–2 ways you are sensing His presence and activity in that place.</p>
+      <label class="note">
+        <span>1–2 ways you are sensing His presence and activity in that place</span>
+        <textarea id="note-presence" rows="4"></textarea>
+      </label>
+      <p>Consider Daniel’s excellence and integrity in his work. Prayerfully consider this question with the Lord as you consider your own work, paid or unpaid: Where might I be pursuing excellence for recognition or self-advancement, rather than as an offering to God and for the flourishing of others?</p>
+      <label class="note">
+        <span>Where excellence might be for recognition, rather than an offering</span>
+        <textarea id="note-offering" rows="4"></textarea>
+      </label>
+      <p class="saved" id="save-state" hidden>Saved on this device.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Vocation · 2026 Fall Vision Series · Joshua Parrish · October 4, 2026</p>
+    <p>The passages are read in the World English Bible, a modern public-domain translation. The NIV text is copyrighted, so each reading links out to it on Bible Gateway.</p>
+  </footer>
+
+  <script>
+(function () {
+  const readings = Array.from(document.querySelectorAll(".reading"));
+  let active = null;
+
+  function speak(text, onend) {
+    if (!window.speechSynthesis) {
+      onend();
+      return;
+    }
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 0.9;
+    utter.pitch = 0.95;
+    const voices = window.speechSynthesis.getVoices();
+    const voice = voices.find(function (item) {
+      return /en(-|_)?(US|GB)/i.test(item.lang) && /andrew|brian|guy|ryan|daniel|david|mark/i.test(item.name);
+    }) || voices.find(function (item) {
+      return item.lang && item.lang.toLowerCase().startsWith("en");
+    });
+    if (voice) utter.voice = voice;
+    utter.onend = onend;
+    utter.onerror = onend;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  }
+
+  function Reading(figure) {
+    this.figure = figure;
+    this.video = figure.querySelector("video");
+    this.hear = figure.querySelector(".hear");
+    this.label = figure.querySelector(".label");
+    this.toggle = figure.querySelector(".toggle");
+    this.now = figure.querySelector(".now");
+    this.status = figure.querySelector(".status");
+    this.verses = Array.from(figure.querySelectorAll(".verse"));
+    this.homeLabel = this.label.textContent;
+    this.index = 0;
+    this.mode = "idle";
+    this.usingVoice = false;
+    const self = this;
+
+    this.hear.addEventListener("click", function () { self.start(0); });
+    this.toggle.addEventListener("click", function () { self.onToggle(); });
+    this.verses.forEach(function (verse, index) {
+      verse.querySelector(".jump").addEventListener("click", function () {
+        if (self.mode === "playing" && self.index === index) self.onToggle();
+        else self.start(index);
+      });
+    });
+    this.video.addEventListener("ended", function () {
+      if (self.mode === "playing" && !self.usingVoice) self.advance();
+    });
+    this.video.addEventListener("error", function () {
+      if (self.mode === "playing" && !self.usingVoice) self.useVoice();
+    });
+  }
+
+  Reading.prototype.claim = function () {
+    if (active && active !== this) active.stop();
+    active = this;
+  };
+
+  Reading.prototype.verseText = function (verse) {
+    return verse.querySelector("p").innerText.replace(/\s+/g, " ").trim();
+  };
+
+  Reading.prototype.paint = function () {
+    const verse = this.verses[this.index];
+    this.verses.forEach(function (item) { item.classList.remove("is-active"); });
+    if (verse && this.mode !== "idle") verse.classList.add("is-active");
+    this.figure.classList.toggle("is-playing", this.mode === "playing");
+    this.figure.classList.toggle("is-paused", this.mode === "paused");
+    this.label.textContent = this.mode === "idle" ? this.homeLabel : "Pause";
+    this.toggle.textContent = this.mode === "paused" ? "Resume" : "Pause";
+    const ref = verse && this.mode !== "idle" ? verse.dataset.ref : "";
+    this.now.textContent = ref;
+    if (this.mode === "playing") this.status.textContent = "Playing " + ref;
+    else if (this.mode === "paused") this.status.textContent = "Paused";
+    else this.status.textContent = "";
+  };
+
+  Reading.prototype.start = function (index) {
+    this.claim();
+    this.index = index;
+    this.mode = "playing";
+    this.usingVoice = false;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    const verse = this.verses[index];
+    const src = verse.dataset.src;
+    this.video.poster = verse.dataset.poster;
+    this.video.muted = false;
+    const absolute = new URL(src, window.location.href).href;
+    if (this.video.currentSrc !== absolute) {
+      this.video.src = src;
+    } else {
+      this.video.currentTime = 0;
+    }
+    this.paint();
+    const self = this;
+    const pending = this.video.play();
+    if (pending && pending.catch) {
+      pending.catch(function () { self.useVoice(); });
+    }
+  };
+
+  Reading.prototype.useVoice = function () {
+    if (this.usingVoice || this.mode !== "playing") return;
+    this.usingVoice = true;
+    this.video.removeAttribute("src");
+    this.video.load();
+    const self = this;
+    speak(this.verseText(this.verses[this.index]), function () {
+      if (self.mode === "playing" && self.usingVoice) self.advance();
+    });
+  };
+
+  Reading.prototype.advance = function () {
+    if (this.index < this.verses.length - 1) this.start(this.index + 1);
+    else this.stop();
+  };
+
+  Reading.prototype.onToggle = function () {
+    if (this.mode === "playing") {
+      this.mode = "paused";
+      this.video.pause();
+      if (window.speechSynthesis) window.speechSynthesis.pause();
+      this.paint();
+      return;
+    }
+    if (this.mode === "paused") {
+      this.mode = "playing";
+      this.paint();
+      if (this.usingVoice && window.speechSynthesis) window.speechSynthesis.resume();
+      else this.video.play();
+    }
+  };
+
+  Reading.prototype.stop = function () {
+    this.mode = "idle";
+    this.usingVoice = false;
+    this.video.pause();
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    this.paint();
+    if (active === this) active = null;
+  };
+
+  readings.forEach(function (figure) { new Reading(figure); });
+
+  const presence = document.getElementById("note-presence");
+  const offering = document.getElementById("note-offering");
+  const saveState = document.getElementById("save-state");
+  const storeKey = "vocation-2026-notes";
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
+    if (saved.presence) presence.value = saved.presence;
+    if (saved.offering) offering.value = saved.offering;
+  } catch (error) {
+    /* Notes stay empty if storage is unavailable. */
+  }
+
+  function persist() {
+    const payload = { presence: presence.value, offering: offering.value };
+    try {
+      localStorage.setItem(storeKey, JSON.stringify(payload));
+      saveState.hidden = false;
+    } catch (error) {
+      saveState.hidden = true;
+    }
+  }
+
+  presence.addEventListener("input", persist);
+  offering.addEventListener("input", persist);
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const hero = document.querySelector(".hero-media");
+    if (hero) {
+      hero.pause();
+      hero.removeAttribute("autoplay");
+    }
+  }
+})();
+
+</script>
+</body>
+</html>
